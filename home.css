@@ -1,0 +1,77 @@
+.slider {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    width: 1200px;
+    background-color: #fff;
+    text-align: center;
+    margin: 100px 100px;
+}
+
+.section {
+    display: flex;
+}
+
+.section .section-slider-left {
+    width: 70%;
+}
+
+
+.section .section-slider-right {
+    width: 30%;
+}
+
+
+.section .section-slider-left {
+    text-align: left;
+    margin-left: 35px;
+}
+
+.section .section-slider-img img {
+    width: 300px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    margin-left: 20px;
+    height: 165px;
+
+}
+
+.section-slider-bottom {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.section-slider-bootom-img{
+    width: 33.33333%;
+    margin-left: 25px;
+}
+
+.section-slider-bootom-img img {
+    width: 330px;
+    border-radius: 10px;
+    
+}
+
+.title {
+    text-align: left;
+}
+
+
+.carts {
+    display: grid;
+    grid-template-columns: repeat(4, 300px);
+} 
+
+
+.card-body {
+    text-align: left;
+}
+
+
