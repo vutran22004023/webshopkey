@@ -66,7 +66,7 @@
                                 style="width:20px" class="me-2"><small>Sign In with Facebook</small></button>
                     </div>
                     <div class="row">
-                        <small>Bạn đã có tài khoản chưa ? <a href="#">Đăng Ký</a></small>
+                        <small>Bạn đã có tài khoản chưa ? <a href="Register.php">Đăng Ký</a></small>
                     </div>
                 </form>
             </div>

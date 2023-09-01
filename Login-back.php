@@ -13,7 +13,7 @@
         $rows = mysqli_num_rows($res);
         if ($rows > 0) {
             $_SESSION['username'] = $username;
-            header('Location:Trangchu.php?susses=1');
+            header('Location:Login.php?susses=1');
         }else {
             $_SESSION['error'] ="Ten dang nhap mat khau ko dung";
             header('Location:Login.php?error=0');
