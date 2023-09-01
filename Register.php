@@ -32,10 +32,10 @@
                         </div>
                         <form action="Register-back.php" method="post" name="form-register" accept-charset="utf-8">
                             <div class="input-group mb-3">
-                                <input type="text" name="username" class="form-control form-control-lg bg-light fs-6" placeholder="Họ Tên">
+                                <input type="text" name="fullname" class="form-control form-control-lg bg-light fs-6" placeholder="Họ Tên">
                             </div>
                             <div class="input-group mb-3">
-                                <input type="text" name="" class="form-control form-control-lg bg-light fs-6" placeholder="Tên đăng nhập">
+                                <input type="text" name="username" class="form-control form-control-lg bg-light fs-6" placeholder="Tên đăng nhập">
                             </div>
                             <div class="input-group mb-3">
                                 <input type="text" name="email" class="form-control form-control-lg bg-light fs-6" placeholder="Email">
