@@ -1,4 +1,4 @@
-<?php require_once('./model/connect.php'); ?>
+<?php require_once('C:\Users\Acer\Documents\Zalo Received Files\baitap_session\webshopkey\model\connect.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">

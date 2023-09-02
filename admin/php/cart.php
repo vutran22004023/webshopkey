@@ -1,3 +1,26 @@
+<?php
+    session_start();
+    error_reporting(E_ALL ^ E_DEPRECATED);
+    error_reporting(2);
+    require_once("../Product/model/connect.php");
+    $infor = '';
+    // cập nhật giỏ hàng
+    if (isset($_POST['update-cart']))
+    {
+        foreach ($_POST['num'] AS $id => $prd)
+        {
+            if (($prd == 0) and (is_numeric($prd)))
+            {
+                unset($_SESSION['cart'][$id]);
+            }
+            elseif (($prd > 0) and (is_numeric($prd)))
+            {
+                $_SESSION['cart'][$id] = $prd;
+            }
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +31,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="/admin/css/cart.css">
+    <link rel="stylesheet" href="C:\Users\Acer\Documents\Zalo Received Files\baitap_session\webshopkey\admin\css\cart.css">
 </head>
 <body>
         <header>
@@ -55,72 +78,124 @@
                   </ul>
               </nav>
         </header>
-
+        
         <div class="content">
             <div class="content-item">
                 <h2>Giỏ Hàng</h2>
                 <div class="item">
                     <div class="item-left">
-                        <div class="item-left-content">
-                            <img src="/public/images/rectangle-27.png" width="210" height="120"  alt="">
-                            <div class="contents">
-                                <div class="content-text">
-                                    <p style="width: 200px;">Steam Wallet Code 40 HKD (~122.880 VNĐ)</p>
-                                </div>
-                                <hr class="mb-3" style="background-color: #625D5D;">
-                                <div class="condition">
-                                    <p>Trạng thái: còn hàng</p>
-                                    <i class="fa-solid fa-trash"></i>
-                                </div>
-                            </div>
-                        </div>
+        <?php
+            $totalAllSale = 0;
+            $total = 0;
+            $totalPay = 0;
+            if (isset($_SESSION['cart'])) 
+            {
+                foreach ($_SESSION['cart'] AS $id => $prd) 
+                {
+                    $sql = "SELECT * FROM products WHERE id = $id";
+                    $result = mysqli_query($conn,$sql);
+                    if (!$result) {
+                        echo 'Không thể chọn!';
+                    }
+                    else
+                    {
+                        while ($row = mysqli_fetch_assoc($result))
+                    {
+                        if ($row['image'] == null || $row['image'] == '') {
+                            $Image = "";
+                        }
+                        else {
+                            $Image = $row['image'];
+                        }
 
+                        // Số lượng sản phẩm
+                        $quantity = $_SESSION['cart'][$row['id']];
+
+                        // Giảm giá 1%
+                        $salePrice = $row['saleprice'] * $row['price'] / 100;
+
+                        // Tổng giảm giá của 1 sản phẩm: "tổng giảm giá * số lượng"
+                        $totalSalePrice = $salePrice * $quantity;
+
+                        // Tổng giá của 1 sản phẩm đó: "số lượng * giá - giảm giá""
+                        $totalPriceProduct = $quantity * $row['price'] - $totalSalePrice;
+
+                        // Tổng giảm giá của các sản phẩm: "tổng giảm + tổng giảm giá từng sản phẩm"
+                        $totalAllSale = $totalAllSale + $totalSalePrice;
+
+                        // Tổng tiền của 1 sản phẩm: "tổng tiền + số lượng * giá"
+                        $total = $total + $quantity * $row['price'];
+
+                        // Tổng tiền người dùng phải trả: "tổng tiền sản phẩm - tổng giảm giá"
+                        $totalPay = $total - $totalAllSale;
+        ?>
                         <div class="item-left-content">
-                            <img src="/public/images/rectangle-27.png" width="210" height="120"  alt="">
+                        <img src="<?php echo $Image; ?>" width="210" height="120"  alt="">
                             <div class="contents">
                                 <div class="content-text">
-                                    <p style="width: 200px;">Steam Wallet Code 40 HKD (~122.880 VNĐ)</p>
+                                <p style="width: 200px;"><?php echo $row['name']; ?></p>
+                                    <p><?php echo number_format($row['price']); ?></p>
                                 </div>
+                                <div class ="form-group">
+                                <input type="number" size="2" name="num[<?php echo $row['id']; ?>]" value="<?php echo $_SESSION['cart'][$row['id']]; ?>" min="1"/>
+                                </div>
+                                <a onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')" href ="delete-cart.php?id=<?php echo $id; ?>">
+                                                                <span class="fa fa-trash fa-lg" aria-hidden="true"></span>
+                                                        </a
                                 <hr class="mb-3" style="background-color: #625D5D;">
-                                <div class="condition">
-                                    <p>Trạng thái: còn hàng</p>
-                                    <i class="fa-solid fa-trash"></i>
-                                </div>
+                                
                             </div>
                         </div>
+                        <?php
+                                                    $infor = $infor . $row['name'] . ' - ' . $_SESSION['cart'][$row['id']] . ' cái - giá: ' . $row['price'] . '<br/>';
+                                                }
+                                            }
+                                        }
+                                        // Lưu thông tin mua sản phẩm để gửi email cho khách hàng
+                                        $_SESSION['infor'] = $infor;
+                                        // Lưu tổng tiền phải thanh toán để gửi email cho khách hàng
+                                        $_SESSION['total'] = $totalPay;
+                                    }
+                                    ?>
+                        
                     </div>
                     <div class="item-right">
-                        <form action="">
-                            <label for="">Bạn có mã giới thiệu?</label> <br>
-                            <input type="text" placeholder="Mã giới thiệu">
-                            <button type="submit">ÁP dung</button>
-                            <label for="">Bạn có mã ưu đãi?</label> <br>
-                            <input type="text" placeholder="Mã ưu đãi">
-                            <button type="submit">ÁP dung</button>
-                        </form>
+                    <div class="calculator">
+                            <div class ="col-md-5 col-sm-6 col-xs-12 update-view ">
+                                <button type="submit" name="update-cart"> Cập nhật giỏ hàng </button>
+                                <button id ="total">
+                                    <span style="font-weight: bold;"> Tổng tiền: <?php echo number_format($totalPay); ?>
+                                        <sup>đ</sup>
+                                    </span>
+                                </button>
+                            </div><!-- /col -->
+                        </div><!-- /caculate -->
 
-                        <div class="pay">
-                            <h4>Thanh toán</h4>
-                            <div class="price">
-                                <div>Tổng giá trị sản phẩm</div>
-                                <div>550.000đ</div>
-                            </div>
-                            <hr class="mb-2">
-                            <div class="price">
-                                <div>Tổng giá trị phải thanh toán</div>
-                                <div>550.000đ</div>
-                            </div>
-                            <div class="price">
-                                <div>Số dư hiện tại</div>
-                                <div>0đ</div>
-                            </div>
-                            <div class="price">
-                                <div>Số tiền cần nạp thêm</div>
-                                <div>550.000đ</div>
-                            </div>
-                            <div class="input-group mb-3">
-                                <button class="btn btn-lg btn-primary w-100 fs-6">Thanh toán</button>
-                            </div>
+                        <div class ="col-md-7 col-sm-6 col-xs-12 title_right">
+                            <div class ="title_right">
+                                <button>
+                                    <a href="index.php"> Tiếp tục mua hàng </a>
+                                </button>
+                            </div><!-- /title_right-->
+
+                            <button class="delete">
+                                <a onclick="return confirm('Giỏ hàng sẽ trống! Bạn chắc chắn muốn hủy giỏ hàng này không?')" href ="delete-cart.php?idCancel=0"> Hủy giỏ hàng </a>
+                            </button>
+                            <?php
+                                if (isset($_SESSION['username']))
+                                {
+                            ?>
+                                    <button><a href="delete-cart.php?id=0"> Đặt hàng </a></button>
+                            <?php
+                                }
+                                else
+                                {
+                            ?>
+                                    <button><a href="order-cart.php"> Tiến hành mua hàng </a></button>
+                            <?php
+                                }
+                            ?>
+                        </div>
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,7 @@
 	session_start();
 	error_reporting(E_ALL ^ E_DEPRECATED);
 
-	require_once '/model/connect.php';
+	require_once 'C:\Users\Acer\Documents\Zalo Received Files\baitap_session\webshopkey\model\connect.php';
 
 ?> 
 
