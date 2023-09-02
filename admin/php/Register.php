@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="login-register.css">
+    <link rel="stylesheet" href="/admin/css/login-register.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -21,7 +21,7 @@
             <div class="row border rounded-5 p-3 bg-white shadow box-area">
                 <!--------------------------- Left Box ----------------------------->
                 <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box">
-                    <img src="./public/images/frame-37.png" class="img-fluid" style="border-radius: 20px;">
+                    <img src="/public/images/frame-37.png" class="img-fluid" style="border-radius: 20px;">
                 </div>
                 <!-------------------- ------ Right Box ---------------------------->
 
