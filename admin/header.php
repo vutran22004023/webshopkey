@@ -12,10 +12,18 @@
                         </form>
                     </div>
                     <div class="login container-fluid " style="margin-left: 300px;">
-                        <i class="fa-solid fa-user"></i>
-                        <a href="">Đăng Nhập</a>
+                    <?php 
+                    
+                    if (!empty($_SESSION['username'])) {
+                        echo "Tên đăng nhập <b><i>" . $_SESSION['username'] . "</b></i><br>";
+                    } else{
+                        echo '<i class="fa-solid fa-user"></i>
+                        <a href="../admin/Login.php">Đăng Nhập</a>
                         <span>/</span>
-                        <a href="">Đăng ký</a>
+                        <a href="../admin//Register.php">Đăng ký</a>';
+                    }
+                    ?>
+                        
                     </div>
 
                     <button class="cart container-fluid " style="border-radius: 10px; width: 450px; height: 60px; margin-right: 20px;">

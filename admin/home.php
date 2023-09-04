@@ -126,7 +126,7 @@ require_once '../model/connect.php';
     <div class="slider">
         <div class="contents">
             <div class="title">
-                <h2>Window Bản Quyền</h2>
+                <h2>Code game steam</h2>
             </div>
             <div class="carts">
                 <?php

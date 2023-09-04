@@ -37,7 +37,7 @@
 
 
         $sql = "INSERT INTO users (fullname, username ,password, email,role)
-                VALUES ('$fullname', '$username','$password', '$email', 1)";
+                VALUES ('$fullname', '$username',md5('$password'), '$email', 1)";
         $res = mysqli_query($conn,$sql);
         if ($res)   
         {
@@ -54,3 +54,5 @@
     }
 }
 ?>
+
+
