@@ -1,28 +1,34 @@
 <?php
     session_start();
     error_reporting(E_ALL ^ E_DEPRECATED);
-    require_once '../model/connect.php';  
+    require_once('../model/connect.php');
 
     if (isset($_POST['submit']))
     {
-        
-        $password = $_POST['password'];
         $username = $_POST['username'];
-        $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+        $password = $_POST['password'];
+
+        $sql = "SELECT * FROM users WHERE username = '$username' AND password = md5('$password')";
         $res = mysqli_query($conn,$sql);
+
         $rows = mysqli_num_rows($res);
-        if ($rows > 0) {
-            $_SESSION['username'] = $username;
-            header('Location:home.php?ls=success');
+        if ($rows > 0)
+        {
+            $_SESSION['username'] = $username; // Initializing Session,Khởi tạo Session cho username
+            while($row = mysqli_fetch_assoc($res)) {
+                $_SESSION['id-user'] = $row['id'];
+            }
+            header("location:home.php?ls=success");
             exit();
+
+        } else {
+            $_SESSION['error'] = 'Tên đăng nhập hoặc mật khẩu không hợp lệ!';
             
-            
-        }else {
-            $_SESSION['error'] ="Ten dang nhap mat khau ko dung";
-            header('Location:Login.php?error=0');
+            header("location:Login.php?error=wrong");
             exit();
         }
-
-    
-    } 
+    } else {
+    //    echo 'lala';
+    }
 ?>
+ 

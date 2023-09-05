@@ -4,6 +4,20 @@ error_reporting(E_ALL ^ E_DEPRECATED);
 
 require_once '../model/connect.php';
 
+if (isset($_GET['error'])) {
+    $error = "Vui lòng kiểm tra lại tài khoản hoặc mật khẩu của bạn!";
+}
+else {
+    $error = "";
+}
+
+if (isset($_GET['rs'])) {
+    echo "<script type=\"text/javascript\">alert(\"Bạn đã đăng ký thành công!\");</script>";
+    echo "<script type=\"text/javascript\">alert(\"Vui lòng đăng nhập để mua hàng!\");</script>";
+}
+if (isset($_GET['rf'])) {
+    echo "<script type=\"text/javascript\">alert(\"Đăng ký thất bại!\");</script>";
+}
 ?>
 
 
@@ -40,7 +54,7 @@ require_once '../model/connect.php';
                         </div>
                         <form action="Login-back.php" method="post" name="form-login" accept-charset="utf-8">
                             <div class="input-group mb-3">
-                                <input type="text" name="email" class="form-control form-control-lg bg-light fs-6" placeholder="Nhập Email">
+                                <input type="text" name="username" class="form-control form-control-lg bg-light fs-6" placeholder="Tên Đăng Nhập">
                             </div>
                             <div class="input-group mb-1">
                                 <input type="password" name="password" class="form-control form-control-lg bg-light fs-6" placeholder="Nhập Mật Khẩu">

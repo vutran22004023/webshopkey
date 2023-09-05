@@ -14,6 +14,6 @@
 
     $_SESSION['cart'][$id] = $prd;
     $sl = $_SESSION['cart'];
-    header('location:home.php');
+    header('location:./home.php');
 ?>
 

@@ -1,3 +1,9 @@
+<?php
+session_start();
+error_reporting(E_ALL ^ E_DEPRECATED);
+require_once '../model/connect.php';
+?>
+
 <header>
     <div class="header-top"></div>
     <nav class="navbar navbar-expand-lg">
@@ -15,20 +21,36 @@
                 <?php
 
                 if (!empty($_SESSION['username'])) {
-                    echo "Tên đăng nhập <b><i>" . $_SESSION['username'] . "</b></i><br>";
-                } else {
-                    echo '<i class="fa-solid fa-user"></i>
-                        <a href="../admin/Login.php">Đăng Nhập</a>
-                        <span>/</span>
-                        <a href="../admin//Register.php">Đăng ký</a>';
-                }
+
                 ?>
+                    <li style="list-style: none;" class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?php echo $_SESSION['username']; ?>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Thông tin cá nhân</a></li>
+                            <li><a class="dropdown-item" href="#">Đơn hàng đã đặt</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="./logout.php">Đăng xuất</a></li>
+                        </ul>
+                    </li>
+                <?php } else { ?>
+                    <i class="fa-solid fa-user"></i>
+                    <a href="../admin/Login.php">Đăng Nhập</a>
+                    <span>/</span>
+                    <a href="../admin//Register.php">Đăng ký</a>
+                <?php } ?>
+
 
             </div>
 
             <button class="cart container-fluid " style="border-radius: 10px; width: 450px; height: 60px; margin-right: 20px;">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span>Giỏ Hàng</span>
+                <a href="./view-cart.php" style="color: #000">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span>Giỏ Hàng</span>
+                </a>
             </button>
         </div>
     </nav>

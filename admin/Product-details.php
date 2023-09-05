@@ -86,7 +86,7 @@ if (isset($_GET['id'])) {
         <div class="containers">
             <div class="content">
                 <div class="item-left">
-                    <img src="/images (1)/add/9.jpg" width="500" height="300" style="border-radius: 10px ;" alt="">
+                    <img src="<?php echo htmlspecialchars($product['image']); ?>" width="500" height="300" style="border-radius: 10px ;" alt="">
                 </div>
                 <div class="item-right">
                     <h1><?php echo htmlspecialchars($product['name']); ?></h1>
