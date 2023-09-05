@@ -26,18 +26,27 @@ if (isset($_SESSION['username'])) {
         $isEditing = true;
     } elseif (isset($_POST['update'])) {
         // Người dùng đã chỉnh sửa thông tin, cập nhật vào cơ sở dữ liệu
-        $newName = $_POST['new-name'];
+        $newFullname = $_POST['new-fullname'];
+        $newUsername = $_POST['new-username'];
         $newEmail = $_POST['new-email'];
+        $newAddress = $_POST['new-address'];
+        $newPhone = $_POST['new-phone'];
+        $newPassword = $_POST['new-password'];
+        $userId = $user['id']; // Lấy ID người dùng từ kết quả truy vấn
 
-        $updateQuery = "UPDATE users SET username=?, email=? WHERE id=?";
+        $updateQuery = "UPDATE users SET fullname=?, username=?, email=?, address=?, phone=?, password=? WHERE id=?";
         $updateStmt = $conn->prepare($updateQuery);
-        $updateStmt->bind_param('ssi', $newName, $newEmail, $userId);
+        $updateStmt->bind_param('ssssssi', $newFullname, $newUsername, $newEmail, $newAddress, $newPhone, $newPassword, $userId);
 
         if ($updateStmt->execute()) {
             // Cập nhật thành công, cập nhật thông tin trong phiên
-            $_SESSION['name'] = $newName;
+            $_SESSION['fullname'] = $newFullname;
+            $_SESSION['username'] = $newUsername;
             $_SESSION['email'] = $newEmail;
-            header("Location: edit-user.php?thanhcong"); // Để tải lại trang
+            $_SESSION['address'] = $newAddress;
+            $_SESSION['phone'] = $newPhone;
+            $_SESSION['password'] = $newPassword;
+            header("Location:edit-user.php?thanhcong"); // Để tải lại trang
             exit();
         } else {
             echo "Error updating user information: " . $conn->error;
@@ -49,6 +58,7 @@ if (isset($_SESSION['username'])) {
     exit();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -131,26 +141,46 @@ if (isset($_SESSION['username'])) {
     </nav>
 </header>
     <h1>User Profile</h1>
-    <form method="POST">
-    <!-- <fieldset disabled> -->
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="new-name" value="<?php echo $user['username']; ?>" <?php if(isset($isEditing)) echo "disabled"; ?>><br>
+    <?php if (isset($isEditing)): ?>
+        <!-- Form chỉnh sửa thông tin -->
+        <form method="POST">
+            <label for="new-fullname">Full Name:</label>
+            <input type="text" id="new-fullname" name="new-fullname" value="<?php echo $user['fullname']; ?>"><br>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="new-email" value="<?php echo $user['email']; ?>" <?php if(isset($isEditing)) echo "disabled"; ?>><br>
-        <!-- </fieldset> -->
-        
+            <label for="new-username">Username:</label>
+            <input type="text" id="new-username" name="new-username" value="<?php echo $user['username']; ?>"><br>
 
+            <label for="new-email">Email:</label>
+            <input type="email" id="new-email" name="new-email" value="<?php echo $user['email']; ?>"><br>
 
-        <?php if(isset($isEditing)): ?>
-            <input type="submit" name="update" value="Thay đổi thành công">
-        <?php else: ?>
-            <input type="submit" name="edit" value="chỉnh sửa">
-        <?php endif; ?>
-    </form>
+            <label for="new-address">Address:</label>
+            <input type="text" id="new-address" name="new-address" value="<?php echo $user['address']; ?>"><br>
 
-    <!-- Nút hoặc biểu tượng để quay lại trang chính hoặc trang khác -->
-    <a href="index.php">Quay lại trang chính</a>
+            <label for="new-phone">Phone:</label>
+            <input type="number" id="new-phone" name="new-phone" value="<?php echo $user['phone']; ?>"><br>
+
+            <label for="new-password">Password:</label>
+            <input type="password" id="new-password" name="new-password" value="<?php echo $user['password']; ?>"><br>
+
+            <!-- Các trường thông tin khác -->
+
+            <input type="submit" name="update" value="Update">
+        </form>
+    <?php else: ?>
+        <!-- Hiển thị thông tin người dùng -->
+        <p><strong>Full Name:</strong> <?php echo $user['fullname']; ?></p>
+        <p><strong>Username:</strong> <?php echo $user['username']; ?></p>
+        <p><strong>Email:</strong> <?php echo $user['email']; ?></p>
+        <p><strong>Address:</strong> <?php echo $user['address']; ?></p>
+        <p><strong>Phone:</strong> <?php echo $user['phone']; ?></p>
+        <p><strong>Password:</strong> <?php echo $user['password']; ?></p>
+        <!-- Hiển thị các trường thông tin khác -->
+
+        <form method="POST">
+            <input type="submit" name="edit" value="Edit">
+        </form>
+    <?php endif; ?>
+
     <?php include ('../admin/footer.php') ?>
 </body>
 </html>
