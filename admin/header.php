@@ -23,12 +23,12 @@ require_once '../model/connect.php';
                 if (!empty($_SESSION['username'])) {
 
                 ?>
-                    <li style="list-style: none;" class="nav-item dropdown">
+                    <li style="list-style: none; font-size: 20px" class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <?php echo $_SESSION['username']; ?>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Thông tin cá nhân</a></li>
+                            <li><a class="dropdown-item" href="./edit-user.php">Thông tin cá nhân</a></li>
                             <li><a class="dropdown-item" href="#">Đơn hàng đã đặt</a></li>
                             <li>
                                 <hr class="dropdown-divider">
