@@ -89,6 +89,7 @@ require_once '../model/connect.php';
                             <h5 class="card-title"><?php echo $kq['name']; ?></h5>
                             <p class="card-text"><?php echo $kq['price']; ?><sup> đ</sup></p>
                             <a href="Product-details.php?id= <?php echo $kq['id']; ?>" class="btn btn-primary">View Details</a>
+                            <a href="addcart.php?id= <?php echo $kq['id']; ?>" class="btn btn-primary">add sản phẩm</a>
                         </div>
                     </div>
 
@@ -115,6 +116,7 @@ require_once '../model/connect.php';
                             <h5 class="card-title"><?php echo $kq['name']; ?></h5>
                             <p class="card-text"><?php echo $kq['price']; ?><sup> đ</sup></p>
                             <a href="Product-details.php?id= <?php echo $kq['id']; ?>" class="btn btn-primary">View Details</a>
+                            <a href="addcart.php?id= <?php echo $kq['id']; ?>" class="btn btn-primary">add sản phẩm</a>
                         </div>
                     </div>
 
@@ -141,6 +143,7 @@ require_once '../model/connect.php';
                             <h5 class="card-title"><?php echo $kq['name']; ?></h5>
                             <p class="card-text"><?php echo $kq['price']; ?><sup> đ</sup></p>
                             <a href="Product-details.php?id= <?php echo $kq['id']; ?>" class="btn btn-primary">View Details</a>
+                            <a href="addcart.php?id= <?php echo $kq['id']; ?>" class="btn btn-primary">add sản phẩm</a>
                         </div>
                     </div>
 

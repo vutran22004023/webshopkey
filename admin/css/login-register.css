@@ -2,7 +2,7 @@
 body{
     font-family: 'Poppins', sans-serif;
     background: #ececec;
-    background-image: url("./public/images/login-page2.png");
+    background-image: url("../images/logo/logo-login.png");
 }
 /*------------ Login container ------------*/
 .box-area{
