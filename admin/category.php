@@ -11,7 +11,8 @@ $render = "";
             <div class="card-body">
                 <h5 class="card-title">' . $kq['name'] . '</h5>
                 <p class="card-text">' . $kq["price"] . '</p>
-                <a href="Product-details.php?id=' . $kq['id'] . '" class="btn btn-primary">View Details</a>
+                <a href="Product-details.php?id=' . $kq['id'] . '" class="btn btn-primary">Chi Tiết</a>
+                <a href="addcart.php?id=' . $kq['id'] . '" class="btn btn-primary">Thêm vào giỏ hàng</a>
             </div>
         </div>
             ';
@@ -26,7 +27,8 @@ $render = "";
             <div class="card-body">
                 <h5 class="card-title">' . $kq['name'] . '</h5>
                 <p class="card-text">' . $kq["price"] . '</p>
-                <a href="Product-details.php?id=' . $kq['id'] . '" class="btn btn-primary">View Details</a>
+                <a href="Product-details.php?id=' . $kq['id'] . '" class="btn btn-primary">Chi Tiết</a>
+                <a href="addcart.php?id=' . $kq['id'] . '" class="btn btn-primary">Thêm vào giỏ hàng</a>
             </div>
         </div>
             ';
@@ -41,7 +43,8 @@ $render = "";
             <div class="card-body">
                 <h5 class="card-title">' . $kq['name'] . '</h5>
                 <p class="card-text">' . $kq["price"] . '</p>
-                <a href="Product-details.php?id=' . $kq['id'] . '" class="btn btn-primary">View Details</a>
+                <a href="Product-details.php?id=' . $kq['id'] . '" class="btn btn-primary">Chi Tiết</a>
+                <a href="addcart.php?id=' . $kq['id'] . '" class="btn btn-primary">Thêm vào giỏ hàng</a>
             </div>
         </div>
             ';

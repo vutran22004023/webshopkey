@@ -43,13 +43,13 @@
         {
             $_SESSION['username'] = $username;
             echo '<script>alert("Đăng nhập thành công!");</script>';
-            header("location:Login.php?rf=success");
+            header("location:Login.php?rs=success");
             exit();
         }
         else 
         {
             echo '<script>alert("Đăng ký không thành công!");</script>';
-            header("location:Register.php?rf=erorr");
+            header("location:Register.php?rf=fail");
         }
     }
 }

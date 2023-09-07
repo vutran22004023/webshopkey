@@ -12,7 +12,8 @@ if (isset($_POST['name-product'])) {
             <div class="card-body">
                 <h5 class="card-title">' . $table['name'] . '</h5>
                 <p class="card-text">' . $table["price"] . '</p>
-                <a href="Product-details.php?id=' . $table['id'] . '" class="btn btn-primary">View Details</a>
+                <a href="Product-details.php?id=' . $table['id'] . '" class="btn btn-primary">Chi Tiết</a>
+                <a href="addcart.php?id=' . $table['id'] . '" class="btn btn-primary">Thêm vào giỏ hàng</a>
             </div>
         </div>
             ';
