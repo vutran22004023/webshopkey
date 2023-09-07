@@ -63,7 +63,7 @@ require_once '../model/connect.php';
                 <a class="nav-link" href="./category.php">Thể Loại</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="./contact.php">Liên Hệ</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link " href="#">Disabled</a>
