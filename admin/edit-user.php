@@ -5,21 +5,21 @@ require_once('../model/connect.php');
 
 // Kiểm tra xem người dùng đã đăng nhập hay chưa
 if (isset($_SESSION['username'])) {
-    $username = $_SESSION['username'];
+    $userId = $_SESSION['id-user'];
 
-    // Truy vấn thông tin người dùng từ cơ sở dữ liệu
-    $query = "SELECT * FROM users WHERE username=?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param('s', $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
+// Truy vấn thông tin người dùng từ cơ sở dữ liệu bằng ID
+$query = "SELECT * FROM users WHERE id=?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param('i', $userId);
+$stmt->execute();
+$result = $stmt->get_result();
 
-    if ($result->num_rows == 1) {
-        $user = $result->fetch_assoc();
-    } else {
-        echo "User not found.";
-        exit();
-    }
+if ($result->num_rows == 1) {
+    $user = $result->fetch_assoc();
+} else {
+    echo "User not found.";
+    exit();
+}
 
     if (isset($_POST['edit'])) {
         // Người dùng nhấn nút "Chỉnh sửa", cho phép chỉnh sửa thông tin

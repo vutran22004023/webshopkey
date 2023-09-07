@@ -29,7 +29,7 @@ require_once '../model/connect.php';
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="./edit-user.php">Thông tin cá nhân</a></li>
-                            <li><a class="dropdown-item" href="#">Đơn hàng đã đặt</a></li>
+                            <li><a class="dropdown-item" href="./order-list.php">Đơn hàng đã đặt</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -40,7 +40,7 @@ require_once '../model/connect.php';
                     <i class="fa-solid fa-user"></i>
                     <a href="../admin/Login.php">Đăng Nhập</a>
                     <span>/</span>
-                    <a href="../admin//Register.php">Đăng ký</a>
+                    <a href="../admin/Register.php">Đăng ký</a>
                 <?php } ?>
 
 
