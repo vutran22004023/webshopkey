@@ -190,7 +190,7 @@
                                             <a href="order-detail.php?idOrderDetail=<?php echo $row['idOrder']; ?>" title="Chỉnh sửa"><i class="fa fa-pencil fa-lg"></i></a>
                                         </td>
                                         <td>
-                                            <a onclick="return confirm('Bạn có chắc chắn muốn xóa order này không?')" href="order-delete.php?deleteAllIdOrderSame=<?php echo $row['idOrder']; ?>&statusOrder=<?php echo $row['status']; ?>" title="Xóa"><i class ="fa fa-trash-o fa-lg"></i></a>
+                                            <a onclick="return confirm('Bạn có chắc chắn muốn xóa order này không?')" href="order-delete.php?deleteAllIdOrderSame=<?php echo $row['idOrder']; ?>&statusOrder=<?php echo $row['status']; ?>" title="Xóa"><i class="fa-regular fa-trash-can"></i></a>
                                         </td>
                                     </tr>
                         <?php

@@ -8,7 +8,7 @@ require_once '../model/connect.php';
     <div class="header-top"></div>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid" style="height: 90px;">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="./home.php">
                 <img src="./images/logo/black-green-futuristic-game-logo-1.png" width="100" height="90" alt="">
             </a>
             <div class="container-fluid d-flex">
