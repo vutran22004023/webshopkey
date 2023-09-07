@@ -106,14 +106,14 @@
             }
 
             // Gọi thư viện gửi email:
-            include('class.smtp.php');
-            include "class.phpmailer.php"; 
+            include('./20_Gui_Mail/class.smtp.php');
+            include "./20_Gui_Mail/class.phpmailer.php"; 
             $nFrom = "Mylishop's Shop";    //mail duoc gui tu dau, thuong de ten cong ty ban
             $mFrom = 'my.hoih@student.passerellesnumeriques.org';  //dia chi email cua ban 
             $mPass = 'hoihmy039745020027121998';       //mat khau email cua ban
             $nTo = $name; //Ten nguoi nhan
             $mTo = $email;   //dia chi nhan mail
-
+            $mail = new PHPMailer();
             $title = 'THÔNG TIN MUA HÀNG TỪ MYLISHOP';   //Tieu de gui mail
             $body = 'NỘI DUNG ĐƠN HÀNG:' . "<br/>"."<br/>".
             $body .= "Tên khách hàng: " . $name . "\n";

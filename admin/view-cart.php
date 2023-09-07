@@ -1,7 +1,6 @@
 <?php
     session_start();
-    error_reporting(E_ALL ^ E_DEPRECATED);
-    error_reporting(2);
+    error_reporting(0);
     require_once('../model/connect.php');
     $infor = '';
     // cập nhật giỏ hàng
@@ -119,7 +118,7 @@
 
                                                         <!-- Số lượng sản phẩm -->
                                                         <td><div class ="form-group">
-                                                            <input type="number" size="2" name="num[<?php echo $row['id']; ?>]" value="<?php echo $_SESSION['cart'][$row['id']]; ?>" min="1"/>
+                                                        <input type="number" size="2" name="num[<?php echo $row['id']; ?>]" value="<?php echo ($_SESSION['cart'][$row['id']] >= 1) ? $_SESSION['cart'][$row['id']] : 1; ?>" min="1" />
                                                         </div></td>
 
                                                         <!-- Giá của 1 sản phẩm -->
@@ -182,7 +181,7 @@
                                 else
                                 {
                             ?>
-                                    <button><a href="order-cart.php"> Tiến hành mua hàng </a></button>
+                                    <button><a href="./order-cart.php"> Tiến hành mua hàng </a></button>
                             <?php
                                 }
                             ?>

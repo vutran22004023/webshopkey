@@ -17,7 +17,7 @@ require_once '../model/connect.php';
 </head>
 
 <body>
-    <?php include ('../admin/header.php') ?>
+    <?php include ('./header.php') ?>
         
     <div class="slider">
         <div class="content">
@@ -153,7 +153,7 @@ require_once '../model/connect.php';
     </div>
 
 
-    <?php include ('../admin/footer.php') ?>
+    <?php include ('./footer.php') ?>
 </body>
 
 </html>

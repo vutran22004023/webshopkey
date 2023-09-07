@@ -44,60 +44,6 @@ if (isset($_POST['name-product'])) {
             <div class="title">
                 <h2>Tìm kiếm sản phẩm</h2>
             </div>
-            <div class="search-bar">
-                <tr>
-                    <td class="tdLabel"><label for="register_country" class="label">Danh mục: </label></td>
-                    <td>
-                        <select name="country" id="register_country" style="width:160px">
-                            <option value="india">india</option>
-                            <option value="pakistan">pakistan</option>
-                            <option value="africa">africa</option>
-                            <option value="china">china</option>
-                            <option value="other">other</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="tdLabel"><label for="register_country" class="label">Thể loại: </label></td>
-                    <td>
-                        <select name="country" id="register_country" style="width:160px">
-                            <option value="india">Tất cả</option>
-                            <option value="pakistan">pakistan</option>
-                            <option value="africa">africa</option>
-                            <option value="china">china</option>
-                            <option value="other">other</option>
-                        </select>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="tdLabel"><label for="register_country" class="label">Mức giá: </label></td>
-                    <td>
-                        <select name="country" id="register_country" style="width:160px">
-                            <option value="india">Tất cả</option>
-                            <option value="pakistan">pakistan</option>
-                            <option value="africa">africa</option>
-                            <option value="china">china</option>
-                            <option value="other">other</option>
-                        </select>
-                    </td>
-                <tr>
-                    <td class="tdLabel"><label for="register_country" class="label">Sắp Xếp: </label></td>
-                    <td>
-                        <select name="country" id="register_country" style="width:160px">
-                            <option value="india">india</option>
-                            <option value="pakistan">pakistan</option>
-                            <option value="africa">africa</option>
-                            <option value="china">china</option>
-                            <option value="other">other</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <input type="submit" value="Lọc">
-                </tr>
-                </tr>
-            </div>
             <div class="cards" style="width: 18rem; margin-bottom:20px;">
                 <?php echo $render; ?>
             </div>

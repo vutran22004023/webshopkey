@@ -57,10 +57,10 @@ require_once '../model/connect.php';
     <nav class="nav navbar  navbar-light" style="background-color: #625D5D; padding: 0;">
         <ul class="nav" style="margin-left: 40px;">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./home.php">Home</a>
+                <a class="nav-link active" aria-current="page" href="./home.php">Trang chủ</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="./category.php">Thể Loại</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>

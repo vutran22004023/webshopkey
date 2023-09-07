@@ -51,7 +51,7 @@ require_once '../model/connect.php';
                 }
             }
 
-            $sql = "SELECT * FROM view_order_list WHERE idOrder =" . $idOrder . ' GROUP BY idOrder';
+            $sql = "SELECT * FROM view_order_list WHERE orders =" . $idOrder . ' GROUP BY idOrder';
             $result = mysqli_query($conn,$sql);
             if ($result)
             {
@@ -177,7 +177,7 @@ require_once '../model/connect.php';
                             </div><!-- /.col -->
                         </div><!-- /.row -->
                         <p style="background-color: #00ff6c;padding: 10px; border-radius: 5%; border: #00ff6c; width: 130px;">
-                            <a href="index.php" style="text-decoration: none; color: #fff"> Trở về trang chủ </a>
+                            <a href="./home.php" style="text-decoration: none; color: #fff"> Trở về trang chủ </a>
                         </p>
                     </div><!-- /.conatiner-fluid -->
                 </div><!-- /#page-wrapper -->
