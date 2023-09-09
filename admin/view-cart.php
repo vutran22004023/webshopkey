@@ -112,7 +112,7 @@ if (isset($_POST['update-cart'])) {
                                                             <!-- Số lượng sản phẩm -->
                                                             <td>
                                                                 <div class="form-group">
-                                                                    <input type="number" size="2" name="num[<?php echo $row['id']; ?>]" value="<?php echo ($_SESSION['cart'][$row['id']] >= 1) ? $_SESSION['cart'][$row['id']] : 1; ?>" min="1" />
+                                                                <input type="number" size="2" name="num[<?php echo $row['id']; ?>]" value="1" value="<?php echo ($_SESSION['cart'][$row['id']] >= 1) ? $_SESSION['cart'][$row['id']] : 1; ?>" min="1" />
                                                                 </div>
                                                             </td>
 
@@ -158,22 +158,22 @@ if (isset($_POST['update-cart'])) {
 
                                 <div class="col-md-7 col-sm-6 col-xs-12 title_right d-flex " style="width: 200px;">
                                     <div class="title_right">
-                                        <button>
+                                        <button style="margin-left: 10px; width:100px; height: 60px;border-radius: 10px;">
                                             <a href="./home.php" style="text-decoration: none;color:#000;width: 600px; height:60px;"> Tiếp tục mua hàng </a>
                                         </button>
                                     </div><!-- /title_right-->
 
-                                    <button class="delete">
+                                    <button class="delete" style="margin-left: 10px; width:500px; height: 60px;border-radius: 10px;">
                                         <a onclick="return confirm('Giỏ hàng sẽ trống! Bạn chắc chắn muốn hủy giỏ hàng này không?')" href="delete-cart.php?idCancel=0" style="text-decoration: none; color:#000;"> Hủy giỏ hàng </a>
                                     </button>
                                     <?php
                                     if (isset($_SESSION['username'])) {
                                     ?>
-                                        <button><a href="delete-cart.php?id=0" style="text-decoration: none;color:#000;"> Đặt hàng </a></button>
+                                        <button style="margin-left: 10px; width:400px; height: 60px;border-radius: 10px;"><a href="orderSuccess.php?id=0" style="text-decoration: none;color:#000;"> Đặt hàng </a></button>
                                     <?php
                                     } else {
                                     ?>
-                                        <button><a href="./order-cart.php" style="text-decoration: none;color:#000;"> Tiến hành mua hàng </a></button>
+                                        <button style="margin-left: 10px; width:400px; height: 60px;border-radius: 10px;"><a href="./order-cart.php" style="text-decoration: none;color:#000; margin-left: 10px;"> Tiến hành mua hàng </a></button>
                                     <?php
                                     }
                                     ?>

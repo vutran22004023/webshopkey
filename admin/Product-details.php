@@ -27,6 +27,7 @@ if (isset($_GET['id'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,47 +38,49 @@ if (isset($_GET['id'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="./css/Product-details.css">
 </head>
+
 <body>
-        <?php include('./header.php')?>
-        <div class="containers">
-            <div class="content">
-                <div class="item-left">
-                    <img src="<?php echo htmlspecialchars($product['image']); ?>" width="500" height="300" style="border-radius: 10px ;" alt="">
-                </div>
-                <div class="item-right">
-                    <h1><?php echo htmlspecialchars($product['name']); ?></h1>
-                    <div class="item-text">
-                        <p>Trạng thái: còn hàng</p>
-                        <p>Thể loại:...</p>
-                        <p>Giá: <?php echo htmlspecialchars($product['price']); ?> đ</p>
-                        <h4>Chọn gói sản phẩm</h4>
-                        <div class="package">
-                            <div>
-                                <button>TK Thường</button>
-                            </div>
-                            <div>
-                                <button>TK Pro</button>
-                            </div>
+    <?php include('./header.php') ?>
+    <div class="containers">
+        <div class="content">
+            <div class="item-left">
+                <img src="<?php echo htmlspecialchars($product['image']); ?>" width="500" height="300" style="border-radius: 10px ;" alt="">
+            </div>
+            <div class="item-right">
+                <h1><?php echo htmlspecialchars($product['name']); ?></h1>
+                <div class="item-text">
+                    <p>Trạng thái: còn hàng</p>
+                    <p>Thể loại:...</p>
+                    <p>Giá: <?php echo htmlspecialchars($product['price']); ?> đ</p>
+                    <h4>Chọn gói sản phẩm</h4>
+                    <div class="package">
+                        <div>
+                            <button>TK Thường</button>
+                        </div>
+                        <div>
+                            <button>TK Pro</button>
+                        </div>
+                    </div>
+
+                    <div class="pay">
+                        <div class="buy">
+                            <button>
+                                <a style="color: #fff;text-decoration: none" href="delete-cart.php?id=0" class=""> <i class="fa-solid fa-credit-card"></i> Mua ngay</a>
+                            </button>
                         </div>
 
-                        <div class="pay">
-                            <div class="buy">
-                                <button>
-                                    <i class="fa-solid fa-credit-card"></i> Mua ngay
-                                </button>
-                            </div>
-                            
-                            <div class="add-cart">
-                                <button>
-                                    <i class="fa-solid fa-cart-shopping"></i> Thêm vào Giỏ Hàng
-                                </button>
-                            </div>
+                        <div class="add-cart">
+                            <button>
+                                <a style="color: #fff;text-decoration: none" href="addcart.php?id= <?php echo $product['id']; ?>" class=""> <i class="fa-solid fa-cart-shopping"></i> Thêm vào giỏ hàng</a>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <?php include('./footer.php')?>
+    <?php include('./footer.php') ?>
 </body>
+
 </html>
