@@ -41,11 +41,11 @@ if (isset($_POST['name-product'])) {
 <?php include ('../admin/header.php') ?>
 
     <div class="slider">
-        <div class="contents">
-            <div class="title">
+        <div class="contents" style="margin-top: 50px;">
+            <div class="title" style="text-align: center;margin-bottom: 20px;" >
                 <h2>Tìm kiếm sản phẩm</h2>
             </div>
-            <div class="cards" style="width: 18rem; margin-bottom:20px;">
+            <div class="cards" style="width: 18rem; text-align: center;">
                 <?php echo $render; ?>
             </div>
         </div>

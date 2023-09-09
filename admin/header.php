@@ -6,7 +6,7 @@ require_once '../model/connect.php';
 
 <header>
     <div class="header-top"></div>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg" style="background-color: #d9d8d8;">
         <div class="container-fluid" style="height: 90px;">
             <a class="navbar-brand" href="./home.php">
                 <img src="./images/logo/black-green-futuristic-game-logo-1.png" width="100" height="90" alt="">
@@ -38,16 +38,16 @@ require_once '../model/connect.php';
                     </li>
                 <?php } else { ?>
                     <i class="fa-solid fa-user"></i>
-                    <a href="../admin/Login.php">Đăng Nhập</a>
+                    <a style="text-decoration: none; color:#000;" href="../admin/Login.php">Đăng Nhập</a>
                     <span>/</span>
-                    <a href="../admin/Register.php">Đăng ký</a>
+                    <a style="text-decoration: none; color: #000;" href="../admin/Register.php">Đăng ký</a>
                 <?php } ?>
 
 
             </div>
 
             <button class="cart container-fluid " style="border-radius: 10px; width: 450px; height: 60px; margin-right: 20px;">
-                <a href="./view-cart.php" style="color: #000">
+                <a href="./view-cart.php" style="color: #000;text-decoration: none;">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span>Giỏ Hàng</span>
                 </a>

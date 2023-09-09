@@ -1,4 +1,15 @@
+.contents {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    text-align: center;
+}
+
 .cards {
     display: grid;
     grid-template-columns: repeat(4, 300px);
+    margin-left: 20px;
 }
