@@ -1,18 +1,33 @@
 <?php
-    $id = $_GET['id'];
-    $prd = NULL;
-    
-    if (isset($_SESSION['oview'][$id]))
-    {
-        $prd = $_SESSION['oview'][$id] + 1;
-    }
-    else
-    {
-        $prd = 1;
-    }
 
-    $_SESSION['oview'][$id] = $prd;
-    $sl = $_SESSION['oview'];
+if (isset($_GET['id'])) {
+    $id = intval($_GET['id']);
+    
+    if (isset($_SESSION['oview'][$id])) {
+        $_SESSION['oview'][$id]++;
+    } else {
+        $_SESSION['oview'][$id] = 1;
+    }
+    
+    // Tiếp tục xử lý sản phẩm với ID đã chuyển đổi
+    require_once('../model/connect.php');
+
+    $query = "SELECT * FROM products WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows == 1) {
+        $product = $result->fetch_assoc();
+    } else {
+        echo "Product not found.";
+        exit();
+    }
+} else {
+    echo "Product ID not provided.";
+    exit();
+}
 ?>
 
 <?php 

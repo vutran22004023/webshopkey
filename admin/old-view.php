@@ -1,12 +1,14 @@
+
+
 <?php
 session_start();
-error_reporting(0);
-require_once('../model/connect.php');
-$infor = '';
 
-?>
-
-<!DOCTYPE html>
+// Kiểm tra xem session 'oview' có tồn tại không
+if (isset($_SESSION['oview']) && !empty($_SESSION['oview'])) {
+    // Tiếp tục xử lý và hiển thị sản phẩm đã xem
+    require_once('../model/connect.php');
+    ?>
+    <!DOCTYPE html>
 <html>
 
 <head>
@@ -53,7 +55,8 @@ $infor = '';
                                         <?php
                                         if (isset($_SESSION['oview'])) {
                                             foreach ($_SESSION['oview'] as $id => $prd) {
-                                                $sql = "SELECT * FROM products WHERE id = $id";
+                                            $id = intval($id);
+                                            $sql = "SELECT * FROM products WHERE id = $id";
                                                 $result = mysqli_query($conn, $sql);
                                                 if (!$result) {
                                                     echo 'Không thể chọn!';
@@ -113,3 +116,9 @@ $infor = '';
 </body>
 
 </html>
+    <?php
+} else {
+    echo "Không có sản phẩm nào đã xem.";
+    exit();
+}
+?>
