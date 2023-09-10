@@ -1,4 +1,21 @@
 <?php
+    $id = $_GET['id'];
+    $prd = NULL;
+    
+    if (isset($_SESSION['oview'][$id]))
+    {
+        $prd = $_SESSION['oview'][$id] + 1;
+    }
+    else
+    {
+        $prd = 1;
+    }
+
+    $_SESSION['oview'][$id] = $prd;
+    $sl = $_SESSION['oview'];
+?>
+
+<?php 
 require_once('../model/connect.php');
 
 if (isset($_GET['id'])) {
@@ -78,7 +95,7 @@ if (isset($_GET['id'])) {
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
 
     <?php include('./footer.php') ?>
 </body>

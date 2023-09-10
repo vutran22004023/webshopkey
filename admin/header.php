@@ -30,6 +30,7 @@ require_once '../model/connect.php';
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="./edit-user.php">Thông tin cá nhân</a></li>
                             <li><a class="dropdown-item" href="./order-list.php">Đơn hàng đã đặt</a></li>
+                            <li><a class="dropdown-item" href="./old-view.php">Lịch sử xem</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -65,6 +66,7 @@ require_once '../model/connect.php';
             <li class="nav-item">
                 <a class="nav-link" href="./contact.php">Liên Hệ</a>
             </li>
+            
             <li class="nav-item">
                 <a class="nav-link " href="#">Disabled</a>
             </li>
