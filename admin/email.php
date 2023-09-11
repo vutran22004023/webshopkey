@@ -22,7 +22,7 @@ try {                //Enable verbose debug output
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('levu1962004@gmail.com', 'testemail');
+    $mail->setFrom('levu1962004@gmail.com', 'ShopKeyCenter');
     $mail->addAddress('tranlevu1962004@gmail.com', 'Vutran');     //Add a recipient             //Name is optional
     // $mail->addReplyTo('info@example.com', 'Information');
     // $mail->addCC('cc@example.com');
@@ -41,7 +41,7 @@ try {                //Enable verbose debug output
         <p> Số điện thoại: '  . $phone . '</p> 
         <p> Địa chỉ: '  . $address . '</p> 
         <p> Thông tin sản phẩm: '  . $infor . '</p> 
-        <p> "Tổng số tiền: '  . $total . '</p> 
+        <p> "Tổng số tiền: '  . $total . '<sup> đ</sup></p> 
         <p> Cảm ơn quý khách đã tin tưởng dùng sản phẩm của chúng tôi! Hy vọng quý khách có thể ghé qua của hàng nhiều hơn, sẽ có nhiều ưu đãi cho khách hàng là thành viên của shop ạ."</p>
     ';
     $mail->Body = $noidung;

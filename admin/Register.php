@@ -40,7 +40,13 @@
                                 <input type="text" name="username" class="form-control form-control-lg bg-light fs-6" placeholder="Tên đăng nhập">
                             </div>
                             <div class="input-group mb-3">
-                                <input type="text" name="email" class="form-control form-control-lg bg-light fs-6" placeholder="Email">
+                                <input type="email" name="email" class="form-control form-control-lg bg-light fs-6" placeholder="Email">
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="text" name="address" class="form-control form-control-lg bg-light fs-6" placeholder="Địa chỉ">
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="number" name="phone" class="form-control form-control-lg bg-light fs-6" placeholder="Số điện thoại">
                             </div>
                             <div class="input-group mb-3">
                                 <input type="password" name="password" class="form-control form-control-lg bg-light fs-6" placeholder="Mật Khẩu">

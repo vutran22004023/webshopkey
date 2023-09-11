@@ -40,6 +40,7 @@
                     $email = $row["email"];
                     $address = $row["address"];
                     $phone = $row["phone"];
+                    $email = $row["email"];
                 }
 
                 $selectSP = "SELECT * FROM orders WHERE user_id = " . $iduser;

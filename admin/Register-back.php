@@ -18,6 +18,14 @@
             $email = $_POST['email'];
         }
 
+        if (isset($_POST['address'])) {
+            $address = $_POST['address'];
+        }
+
+        if (isset($_POST['phone'])) {
+            $phone = $_POST['phone'];
+        }
+
         if (isset($_POST['password'])) {
             $password = $_POST['password'];
         }
@@ -36,8 +44,8 @@
 
 
 
-        $sql = "INSERT INTO users (fullname, username ,password, email,role)
-                VALUES ('$fullname', '$username',md5('$password'), '$email', 1)";
+        $sql = "INSERT INTO users (fullname, username ,password, email,address,phone,role)
+                VALUES ('$fullname', '$username',md5('$password'), '$email','$address','$phone', 1)";
         $res = mysqli_query($conn,$sql);
         if ($res)   
         {
