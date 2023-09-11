@@ -169,7 +169,7 @@ if (isset($_POST['update-cart'])) {
                                     <?php
                                     if (isset($_SESSION['username'])) {
                                     ?>
-                                        <button style="margin-left: 10px; width:400px; height: 60px;border-radius: 10px;"><a href="orderSuccess.php?id=0" style="text-decoration: none;color:#000;"> Đặt hàng </a></button>
+                                        <button style="margin-left: 10px; width:400px; height: 60px;border-radius: 10px;"><a href="delete-cart.php?id=0" style="text-decoration: none;color:#000;"> Đặt hàng </a></button>
                                     <?php
                                     } else {
                                     ?>
