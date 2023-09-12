@@ -88,6 +88,22 @@ require_once '../model/connect.php';
 </header>
     
     <?php
+    // Hàm tạo key ngẫu nhiên có độ dài 8 ký tự
+    function generateRandomKey()
+    {
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        $key = '';
+
+        for ($i = 0; $i < 8; $i++) { // Độ dài key là 8 ký tự
+            $key .= $characters[random_int(0, strlen($characters) - 1)];
+        }
+
+        return $key;
+    }
+
+    // Sử dụng hàm để tạo key mới
+    $newKey = generateRandomKey();
+
         // Lấy id của order_detail
         if (isset($_GET['idOrderDetail']))
         {
@@ -176,6 +192,7 @@ require_once '../model/connect.php';
                                             <th> Giá </th>
                                             <th> Giảm giá </th>
                                             <th> Số lượng </th>
+                                            <th> Key </th>
                                             <th> Tổng cộng </th>
                                         </tr>
                                     </thead>
@@ -221,6 +238,8 @@ require_once '../model/connect.php';
 
                                                         <!-- Số lượng sản phẩm đã đặt -->
                                                         <td><?php echo $kq['quantity']; ?></td>
+
+                                                        <td><?php echo $newKey; ?></td>
 
                                                         <!-- Tổng cộng tiền của 1 sản phẩm đã đặt -->
                                                         <td><?php echo number_format($totalPriceProduct); ?></td>

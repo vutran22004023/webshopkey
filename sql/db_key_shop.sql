@@ -277,6 +277,7 @@ CREATE TABLE `view_order_list` (
 ,`quantity` int(11)
 ,`status` tinyint(2)
 ,`dateOrder` datetime
+,`keyword` varchar(45)
 );
 
 -- --------------------------------------------------------

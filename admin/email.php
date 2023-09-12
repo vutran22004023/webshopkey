@@ -10,7 +10,7 @@ require 'email/PHPMailer/src/SMTP.php';
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
-
+$emails = $_SESSION['email'];
 $noidung = "";
 try {                //Enable verbose debug output
     $mail->isSMTP();                                            //Send using SMTP
@@ -23,7 +23,7 @@ try {                //Enable verbose debug output
 
     //Recipients
     $mail->setFrom('levu1962004@gmail.com', 'ShopKeyCenter');
-    $mail->addAddress('tranlevu1962004@gmail.com', 'Vutran');     //Add a recipient             //Name is optional
+    $mail->addAddress($emails, $name);     //Add a recipient             //Name is optional
     // $mail->addReplyTo('info@example.com', 'Information');
     // $mail->addCC('cc@example.com');
     // $mail->addBCC('bcc@example.com');
