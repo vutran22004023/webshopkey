@@ -115,18 +115,12 @@ if (isset($_GET['id'])) {
     <?php include('./footer.php') ?>
 </body>
 <script>
-    // Lấy ID sản phẩm từ URL
     var productId = <?php echo $product['id']; ?>;
-
-    // Lấy danh sách ID đã xem từ cookie (nếu có)
     var viewedProducts = JSON.parse(localStorage.getItem('viewedProducts')) || [];
 
-    // Kiểm tra xem sản phẩm đã xem có trong danh sách chưa
     if (viewedProducts.indexOf(productId) === -1) {
-        // Nếu chưa có, thêm ID vào danh sách
         viewedProducts.push(productId);
 
-        // Lưu danh sách mới vào cookie
         localStorage.setItem('viewedProducts', JSON.stringify(viewedProducts));
     }
 </script>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 31, 2023 lúc 06:51 PM
+-- Thời gian đã tạo: Th9 12, 2023 lúc 04:35 PM
 -- Phiên bản máy phục vụ: 10.4.25-MariaDB
 -- Phiên bản PHP: 8.1.10
 
@@ -38,7 +38,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
-(1, 'namne', '8A86E1AAF7327885729E5B450841FEF6');
+(1, 'namne', '12345678');
 
 -- --------------------------------------------------------
 
@@ -120,7 +120,13 @@ INSERT INTO `orders` (`id`, `total`, `date_order`, `status`, `user_id`) VALUES
 (4, 245000, '2018-02-02 08:27:05', 1, 15),
 (5, 245000, '2018-02-02 08:29:12', 1, 15),
 (6, 235000, '2018-11-06 18:20:48', 0, 10),
-(7, 245000, '2018-11-06 18:23:37', 0, 15);
+(7, 245000, '2018-11-06 18:23:37', 0, 15),
+(8, 245000, '2023-09-10 19:13:48', 0, 26),
+(9, 245000, '2023-09-10 19:13:50', 0, 26),
+(10, 1165000, '2023-09-11 08:55:28', 0, 26),
+(11, 275000, '2023-09-12 20:44:01', 0, 26),
+(12, 225000, '2023-09-12 20:46:01', 0, 26),
+(13, 225000, '2023-09-12 20:53:09', 0, 28);
 
 -- --------------------------------------------------------
 
@@ -131,6 +137,7 @@ INSERT INTO `orders` (`id`, `total`, `date_order`, `status`, `user_id`) VALUES
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `keyprd` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `category_id` int(11) NOT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -146,25 +153,25 @@ CREATE TABLE `products` (
 -- Đang đổ dữ liệu cho bảng `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `category_id`, `image`, `description`, `price`, `saleprice`, `created`, `quantity`, `keyword`, `status`) VALUES
-(2, 'Steam Wallet Code 40 HKD', 2, 'images/game/1.png', '', 130000, 0, '2017-12-18', 8, '', 0),
-(3, 'Steam Wallet Code 80 HKD', 2, 'images/game/2.png', '', 260000, 0, '2017-12-18', 10, '', 0),
-(4, 'Gói nạp Steam Wallet 20$', 2, 'images/game/3.png', '', 470000, 0, '2017-12-18', 7, '', 0),
-(5, 'Steam Wallet Code 100 TWD', 2, 'images/game/4.png', '', 89000, 0, '2017-12-18', 12, '', 0),
-(6, 'Gói nạp Steam Wallet 50$ ( Nạp chậm )', 2, 'images/game/5.png', '', 1175000, 0, '2017-12-18', 15, '', 0),
-(7, 'Steam Wallet Code 50 HKD', 2, 'images/game/6.png', '', 163000, 0, '2017-12-18', 9, '', 0),
-(8, 'Gói nạp Steam Wallet 100$ ( Nạp chậm )', 2, 'images/game/7.png', '', 2350000, 0, '2017-12-18', 19, '', 0),
-(9, 'Steam Wallet Code 200 HKD', 2, 'images/game/8.png', '', 629000, 0, '2017-12-18', 15, '', 0),
-(10, 'Gói gia hạn Spotify Premium 01 năm', 3, 'images/office/10.jpg', '', 315000, 0, '2017-12-18', 10, '', 0),
-(11, 'Tài khoản OpenAI - ChatGPT (Có sẵn 5$)', 3, 'images/add/9.jpg', '', 99000, 0, '2017-12-18', 10, '', 0),
-(12, 'Windows 10 Professional CD Key', 1, 'images/office/11.jpg', '', 245000, 0, '2017-12-18', 20, '', 0),
-(13, 'Windows 11 Professional CD Key', 1, 'images/office/12.jpg', '', 275000, 0, '2017-12-18', 21, '', 0),
-(14, 'Microsoft Office 2021 Professional Plus for Windows', 1, 'images/office/13.jpg', '', 225000, 0, '2017-12-18', 17, '', 0),
-(15, 'Microsoft Office 2019 Professional Plus for Windows', 1, 'images/office/14.jpg', '', 225000, 0, '2017-12-18', 6, '', 0),
-(16, 'Gói nâng cấp Office 365 1 năm (1TB)', 1, 'images/office/15.jpg', '', 235000, 0, '2017-12-18', 11, '', 0),
-(17, 'Windows 10 Professional DSP OEI DVD (Full VAT)', 1, 'images/office/16.jpg', '', 245000, 0, '2017-12-18', 13, '', 0),
-(18, 'Office Home & Business 2019 English APAC EM (Full VAT)', 1, 'images/office/17.jpg', '', 195000, 0, '2017-12-18', 15, '', 0),
-(19, 'Microsoft Office 2021 Home & Business for MAC', 1, 'images/office/18.jpg', '', 115000, 0, '2017-12-18', 13, '', 0);
+INSERT INTO `products` (`id`, `name`, `keyprd`, `category_id`, `image`, `description`, `price`, `saleprice`, `created`, `quantity`, `keyword`, `status`) VALUES
+(2, 'Steam Wallet Code 40 HKD', 'XM2V9-DN9HH-QB449-XDGKC-W2RMW', 2, 'images/game/1.png', '', 130000, 0, '2017-12-18', 8, '', 0),
+(3, 'Steam Wallet Code 80 HKD', 'W8W6K-3N7KK-PXB9H-8TD8W-BWTH9', 2, 'images/game/2.png', '', 260000, 0, '2017-12-18', 10, '', 0),
+(4, 'Gói nạp Steam Wallet 20$', 'NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP', 2, 'images/game/3.png', '', 470000, 0, '2017-12-18', 7, '', 0),
+(5, 'Steam Wallet Code 100 TWD', 'W8W6K-3N7KK-PXB9H-8TD8W-BWTH9', 2, 'images/game/4.png', '', 89000, 0, '2017-12-18', 12, '', 0),
+(6, 'Gói nạp Steam Wallet 50$ ( Nạp chậm )', 'VQ9DP-NVHPH-T9HJC-J9PDT-KTQRG', 2, 'images/game/5.png', '', 1175000, 0, '2017-12-18', 15, '', 0),
+(7, 'Steam Wallet Code 50 HKD', 'KDNJ9-G2MPB-HWJB4-DC6C2-DDCWD', 2, 'images/game/6.png', '', 163000, 0, '2017-12-18', 9, '', 0),
+(8, 'Gói nạp Steam Wallet 100$ ( Nạp chậm )', 'NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP', 2, 'images/game/7.png', '', 2350000, 0, '2017-12-18', 19, '', 0),
+(9, 'Steam Wallet Code 200 HKD', 'VQ9DP-NVHPH-T9HJC-J9PDT-KTQRG', 2, 'images/game/8.png', '', 629000, 0, '2017-12-18', 15, '', 0),
+(10, 'Gói gia hạn Spotify Premium 01 năm', '3D7W4-F9N4Q-HMQMK-8632X-DYKGG', 3, 'images/office/10.jpg', '', 315000, 0, '2017-12-18', 10, '', 0),
+(11, 'Tài khoản OpenAI - ChatGPT (Có sẵn 5$)', 'B7PBN-GCYRC-Y7WMJ-3YGY2-XTQ2T', 3, 'images/add/9.jpg', '', 99000, 0, '2017-12-18', 10, '', 0),
+(12, 'Windows 10 Professional CD Key', '8NJHV-FBGB4-FBTQH-J3CFT-BP32T', 1, 'images/office/11.jpg', '', 245000, 0, '2017-12-18', 20, '', 0),
+(13, 'Windows 11 Professional CD Key', 'N278J-P73GG-9MW84-JMPP4-CR6TG', 1, 'images/office/12.jpg', '', 275000, 0, '2017-12-18', 21, '', 0),
+(14, 'Microsoft Office 2021 Professional Plus for Windows', 'D6QFG-VBYP2-XQHM7-J97RH-VVRCK', 1, 'images/office/13.jpg', '', 225000, 0, '2017-12-18', 17, '', 0),
+(15, 'Microsoft Office 2019 Professional Plus for Windows', 'V7Y44-9T38C-R2VJK-666HK-T7DDX', 1, 'images/office/14.jpg', '', 225000, 0, '2017-12-18', 6, '', 0),
+(16, 'Gói nâng cấp Office 365 1 năm (1TB)', 'CQYRY-3KBR3-JW34C-VGH7M-MQM', 1, 'images/office/15.jpg', '', 235000, 0, '2017-12-18', 11, '', 0),
+(17, 'Windows 10 Professional DSP OEI DVD (Full VAT)', 'W3BTX-H6BW7-Q6DFW-BXFFY-8RVJP', 1, 'images/office/16.jpg', '', 245000, 0, '2017-12-18', 13, '', 0),
+(18, 'Office Home & Business 2019 English APAC EM (Full VAT)', 'DX4MW-PB7F4-YR4WT-BV3MM-4YV79', 1, 'images/office/17.jpg', '', 195000, 0, '2017-12-18', 15, '', 0),
+(19, 'Microsoft Office 2021 Home & Business for MAC', 'BDD3G-XM7FB-BD2HM-YK63V-VQFDK', 1, 'images/office/18.jpg', '', 115000, 0, '2017-12-18', 13, '', 0);
 
 -- --------------------------------------------------------
 
@@ -190,7 +197,30 @@ INSERT INTO `product_order` (`product_id`, `order_id`, `quantity`) VALUES
 (17, 5, 1),
 (16, 6, 1),
 (17, 7, 1),
-(22, 0, 1);
+(22, 0, 1),
+(12, 8, 1),
+(18, 10, 1),
+(3, 10, 0),
+(13, 10, 1),
+(15, 10, 3),
+(4, 10, 0),
+(17, 10, 1),
+(9, 10, 0),
+(13, 11, 1),
+(15, 12, 1),
+(15, 13, 1),
+(2, 13, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `product_ oview`
+--
+
+CREATE TABLE `product_ oview` (
+  `product_id` int(11) NOT NULL,
+  `oview_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -244,7 +274,13 @@ INSERT INTO `users` (`id`, `fullname`, `username`, `password`, `email`, `address
 (12, 'Ly Ca Tiếu', '', '', 'hoihmy2712@gmail.com', 'Đà Nẵng', '01697450200', NULL, 0),
 (13, 'Ly Ca Tiếu', '', '', 'hoihmy2712@gmail.com', 'Đà Nẵng', '01697450200', NULL, 0),
 (14, 'Ly Ca Tiếu', '', '', 'hoihmy2712@gmail.com', 'Đà Nẵng', '01697450200', NULL, 0),
-(22, 'Mr DInh', 'dinhvcvn', '123abc', 'dinhvcvn@gmail.com', NULL, NULL, '2023-04-01 05:25:22', 1);
+(22, 'Mr DInh', 'dinhvcvn', '123abc', 'dinhvcvn@gmail.com', NULL, NULL, '2023-04-01 05:25:22', 1),
+(23, 'PHAN HOAI NAM', 'cmvnam', '09850985', 'phanhoainam.work@gmail.com', NULL, NULL, NULL, 1),
+(24, 'PHAN HOAI NAM', 'cmvnam', '123', 'phanhoainam.work@gmail.com', NULL, NULL, NULL, 1),
+(25, 'PHAN HOAI NAM', 'nampro', '202cb962ac59075b964b07152d234b70', 'phanhoainam.work@gmail.com', NULL, NULL, NULL, 1),
+(26, 'PHAN HOAI NAM', 'cmvnam', '202cb962ac59075b964b07152d234b70', 'Phanhoainam.work@gmail.com', NULL, NULL, NULL, 1),
+(27, 'PHAN HOAI NAM', 'nampro', 'd41d8cd98f00b204e9800998ecf8427e', 'Phanhoainam.work@gmail.co', 'Liên chiểu, đà nẵng', '03', NULL, 1),
+(28, 'PHAN HOAI NAM', 'nampro1', '202cb962ac59075b964b07152d234b70', 'Phanhoainam.work@gmail.com', 'Liên chiểu, đà nẵng', '0325788806', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -277,7 +313,6 @@ CREATE TABLE `view_order_list` (
 ,`quantity` int(11)
 ,`status` tinyint(2)
 ,`dateOrder` datetime
-,`keyword` varchar(45)
 );
 
 -- --------------------------------------------------------
@@ -393,7 +428,7 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
@@ -423,7 +458,7 @@ ALTER TABLE `slides`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
