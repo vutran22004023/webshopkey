@@ -1,33 +1,61 @@
 <?php
-require_once('../model/connect.php');
 
-// Hàm để thêm sản phẩm vào lịch sử xem
-function addToViewedProducts($productId) {
-    // Kiểm tra nếu cookie lịch sử xem đã tồn tại
-    if (isset($_COOKIE['viewed_products'])) {
-        $viewedProducts = json_decode($_COOKIE['viewed_products'], true);
-
-        // Kiểm tra xem sản phẩm hiện tại đã có trong mảng lịch sử xem chưa
-        if (!in_array($productId, $viewedProducts)) {
-            // Thêm ID sản phẩm vào đầu mảng lịch sử xem
-            array_unshift($viewedProducts, $productId);
-
-            // Giới hạn kích thước của mảng lịch sử xem (ví dụ: giữ lại 5 sản phẩm gần đây)
-            $viewedProducts = array_slice($viewedProducts, 0, 5);
-
-            // Lưu mảng lịch sử xem vào cookie
-            setcookie('viewed_products', json_encode($viewedProducts), time() + 3600 * 24 * 30); // Lưu trong 30 ngày
-        }
+if (isset($_GET['id'])) {
+    $id = intval($_GET['id']);
+    
+    if (isset($_SESSION['oview'][$id])) {
+        $_SESSION['oview'][$id]++;
     } else {
-        // Nếu cookie lịch sử xem chưa tồn tại, tạo một mảng lịch sử xem mới
-        $viewedProducts = [$productId];
-
-        // Lưu mảng lịch sử xem vào cookie
-        setcookie('viewed_products', json_encode($viewedProducts), time() + 3600 * 24 * 30); // Lưu trong 30 ngày
+        $_SESSION['oview'][$id] = 1;
     }
+    
+    // Tiếp tục xử lý sản phẩm với ID đã chuyển đổi
+    require_once('../model/connect.php');
+
+    $query = "SELECT * FROM products WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows == 1) {
+        $product = $result->fetch_assoc();
+    } else {
+        echo "Product not found.";
+        exit();
+    }
+} else {
+    echo "Product ID not provided.";
+    exit();
 }
 ?>
 
+<?php 
+require_once('../model/connect.php');
+
+if (isset($_GET['id'])) {
+    $productId = $_GET['id'];
+
+    // Sử dụng MySQLi với Prepared Statements để ngăn chặn SQL Injection
+    $query = "SELECT * FROM products WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('i', $productId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows == 1) {
+        $product = $result->fetch_assoc();
+    } else {
+        // Xử lý trường hợp không tìm thấy sản phẩm
+        echo "Product not found.";
+        exit();
+    }
+} else {
+    // Xử lý trường hợp không có ID sản phẩm được truyền
+    echo "Product ID not provided.";
+    exit();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -86,5 +114,21 @@ function addToViewedProducts($productId) {
 
     <?php include('./footer.php') ?>
 </body>
+<script>
+    // Lấy ID sản phẩm từ URL
+    var productId = <?php echo $product['id']; ?>;
+
+    // Lấy danh sách ID đã xem từ cookie (nếu có)
+    var viewedProducts = JSON.parse(localStorage.getItem('viewedProducts')) || [];
+
+    // Kiểm tra xem sản phẩm đã xem có trong danh sách chưa
+    if (viewedProducts.indexOf(productId) === -1) {
+        // Nếu chưa có, thêm ID vào danh sách
+        viewedProducts.push(productId);
+
+        // Lưu danh sách mới vào cookie
+        localStorage.setItem('viewedProducts', JSON.stringify(viewedProducts));
+    }
+</script>
 
 </html>
