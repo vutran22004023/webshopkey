@@ -56,7 +56,7 @@
 .section-slider-bootom-img img {
     width: 330px;
     border-radius: 10px;
-    
+    text-align: left;
 }
 
 .title {
