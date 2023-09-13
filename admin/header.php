@@ -31,7 +31,7 @@ require_once '../model/connect.php';
                             <li><a class="dropdown-item" href="./edit-user.php">Thông tin cá nhân</a></li>
                             <li><a class="dropdown-item" href="./order-list.php">Đơn hàng đã đặt</a></li>
                             <li><a class="dropdown-item" href="./viewed_products.php">Lịch sử xem</a></li>
-                            
+                            <li><a class="dropdown-item" href="./purchased_products.php">Key đã mua</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

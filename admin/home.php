@@ -116,8 +116,10 @@ require_once '../model/connect.php';
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $kq['name']; ?></h5>
                             <p class="card-text"><?php echo $kq['price']; ?><sup> đ</sup></p>
+                            <div style="margin-top:42px ; ">
                             <a href="Product-details.php?id= <?php echo $kq['id']; ?>" class="btn btn-primary">Chi tiết</a>
                             <a href="addcart.php?id= <?php echo $kq['id']; ?>" class="btn btn-primary">Thêm vào giỏ hàng</a>
+                            </div>
                         </div>
                     </div>
 

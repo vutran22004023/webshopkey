@@ -99,6 +99,7 @@ if (isset($_POST['update-cart'])) {
 
                                                         // Tổng tiền người dùng phải trả: "tổng tiền sản phẩm - tổng giảm giá"
                                                         $totalPay = $total - $totalAllSale;
+                                                        $keyy = $row['keyprd'];
                                         ?>
                                                         <tr>
                                                             <!-- Ảnh sản phẩm -->
@@ -144,11 +145,11 @@ if (isset($_POST['update-cart'])) {
                                     </tbody>
                                 </table>
                             </div><!-- /content -->
-                            <div class="btn-calculator" style="display: flex; margin-bottom: 30px">
+                            <div class="btn-calculator" style="display: flex; margin-bottom: 30px; color: while;">
                                 <div class="calculator">
-                                    <div class="col-md-5 col-sm-6 col-xs-12 update-view d-flex">
-                                        <button type="submit" name="update-cart" style="width: 400px; height:60px"> Cập nhật giỏ hàng </button>
-                                        <button id="total" style="width: 500px; height:60px; margin-left: 30px">
+                                    <div class="col-md-5 col-sm-6 col-xs-12 update-view d-flex" style = "width: 700px; ">
+                                        <button type="submit" name="update-cart" > Cập nhật giỏ hàng </button>
+                                        <button id="total" >
                                             <span style="font-weight: bold;"> Tổng tiền: <?php echo number_format($totalPay); ?>
                                                 <sup>đ</sup>
                                             </span>
@@ -156,24 +157,25 @@ if (isset($_POST['update-cart'])) {
                                     </div><!-- /col -->
                                 </div><!-- /caculate -->
 
-                                <div class="col-md-7 col-sm-6 col-xs-12 title_right d-flex " style="width: 200px;">
+                                <div class="col-md-7 col-sm-6 col-xs-12 title_right d-flex " style="width: 600px; float: right;">
                                     <div class="title_right">
-                                        <button style="margin-left: 10px; width:100px; height: 60px;border-radius: 10px;">
-                                            <a href="./home.php" style="text-decoration: none;color:#000;width: 600px; height:60px;"> Tiếp tục mua hàng </a>
+                                        <button >
+                                            <a href="./home.php" > Tiếp tục mua hàng </a>
                                         </button>
                                     </div><!-- /title_right-->
 
-                                    <button class="delete" style="margin-left: 10px; width:500px; height: 60px;border-radius: 10px;">
-                                        <a onclick="return confirm('Giỏ hàng sẽ trống! Bạn chắc chắn muốn hủy giỏ hàng này không?')" href="delete-cart.php?idCancel=0" style="text-decoration: none; color:#000;"> Hủy giỏ hàng </a>
+                                    <button class="delete" >
+                                        <a onclick="return confirm('Giỏ hàng sẽ trống! Bạn chắc chắn muốn hủy giỏ hàng này không?')" href="delete-cart.php?idCancel=0" > Hủy giỏ hàng </a>
                                     </button>
                                     <?php
                                     if (isset($_SESSION['username'])) {
                                     ?>
-                                        <button style="margin-left: 10px; width:400px; height: 60px;border-radius: 10px;"><a href="delete-cart.php?id=0" style="text-decoration: none;color:#000;"> Đặt hàng </a></button>
+                                        <button ><a style="color: #fff;text-decoration: none" href="addpurchased.php?id= <?php echo $product['id']; ?>"> <a href="delete-cart.php?id=0" > Đặt hàng </a> </a></button>
+                                        
                                     <?php
                                     } else {
                                     ?>
-                                        <button style="margin-left: 10px; width:400px; height: 60px;border-radius: 10px;"><a href="./order-cart.php" style="text-decoration: none;color:#000; margin-left: 10px;"> Tiến hành mua hàng </a></button>
+                                        <button ><a href="./order-cart.php" > Tiến hành mua hàng </a></button>
                                     <?php
                                     }
                                     ?>
@@ -191,5 +193,69 @@ if (isset($_POST['update-cart'])) {
     <!-- /footer -->
 
 </body>
+<style>
+    a{
+        text-decoration: none;
+        color: white;
+    }
+    /* CSS cho tất cả các nút */
+    button {
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        padding: 15px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: background-color 0.3s;
+        height: 60px;
+        width: 200px;
+    }
+
+    button:hover {
+        background-color: #2980b9;
+    }
+
+    /* CSS cho nút "Cập nhật giỏ hàng" */
+    button[name="update-cart"] {
+        background-color: #4CAF50;
+    }
+
+    button[name="update-cart"]:hover {
+        background-color: #45a049;
+    }
+
+    /* CSS cho nút "Tiếp tục mua hàng" */
+    button[name="continue-shopping"] {
+        background-color: #3498db;
+    }
+
+    button[name="continue-shopping"]:hover {
+        background-color: #2980b9;
+    }
+
+    /* CSS cho nút "Hủy giỏ hàng" */
+    button[name="cancel-cart"] {
+        background-color: #e74c3c;
+    }
+
+    button[name="cancel-cart"]:hover {
+        background-color: #c0392b;
+    }
+
+    /* CSS cho nút "Đặt hàng" */
+    button[name="place-order"] {
+        background-color: #f39c12;
+    }
+
+    button[name="place-order"]:hover {
+        background-color: #d68910;
+    }
+</style>
+
 
 </html>
