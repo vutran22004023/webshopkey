@@ -2,7 +2,14 @@
 
 if (isset($_GET['id'])) {
     $id = intval($_GET['id']);
-    
+    $idk = isset($_COOKIE["viewd"]) ? unserialize($_COOKIE["viewd"]) : [];
+
+    // Thêm phần tử mới vào mảng
+    $idk[] = $id;
+
+    // Lưu trở lại cookie
+    setcookie("viewd", serialize($idk), time() + 3600);
+
     if (isset($_SESSION['oview'][$id])) {
         $_SESSION['oview'][$id]++;
     } else {
@@ -69,6 +76,17 @@ if (isset($_GET['id'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="./css/Product-details.css">
+    <!-- <script>
+        
+    var productId = <?php echo $product['id']; ?>;
+    var viewedProducts = JSON.parse(localStorage.getItem('viewedProducts')) || [];
+
+    if (viewedProducts.indexOf(productId) === -1) {
+        viewedProducts.push(productId);
+
+        localStorage.setItem('viewedProducts', JSON.stringify(viewedProducts));
+    }
+</script> -->
 </head>
 
 <body>
@@ -114,15 +132,6 @@ if (isset($_GET['id'])) {
 
     <?php include('./footer.php') ?>
 </body>
-<script>
-    var productId = <?php echo $product['id']; ?>;
-    var viewedProducts = JSON.parse(localStorage.getItem('viewedProducts')) || [];
 
-    if (viewedProducts.indexOf(productId) === -1) {
-        viewedProducts.push(productId);
-
-        localStorage.setItem('viewedProducts', JSON.stringify(viewedProducts));
-    }
-</script>
 
 </html>

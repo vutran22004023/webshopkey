@@ -1,9 +1,9 @@
 <?php
-// Lấy danh sách ID sản phẩm đã xem từ cookie
-$viewedProducts = json_decode($_COOKIE['viewedProducts']);
-
-// Include file kết nối CSDL
 require_once('../model/connect.php');
+// Lấy danh sách ID sản phẩm đã xem từ cookie
+// $viewedProducts = json_decode($_COOKIE['viewedProducts']);
+// setcookie('viewedProducts', json_encode($viewedProducts), time() + 3600, '/');
+
 ?>
 
 <!DOCTYPE html>
@@ -25,26 +25,51 @@ require_once('../model/connect.php');
     <div class="container">
         <h1>Lịch sử xem sản phẩm</h1>
         <div class="product-list">
-            <?php
-            // Duyệt qua danh sách ID sản phẩm đã xem và hiển thị thông tin sản phẩm
-            foreach ($viewedProducts as $productId) {
-                $query = "SELECT * FROM products WHERE id = ?";
-                $stmt = $conn->prepare($query);
-                $stmt->bind_param('i', $productId);
-                $stmt->execute();
-                $result = $stmt->get_result();
+            <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th> Ảnh sản phẩm </th>
+                                            <th> Tên sản phẩm</th>                                           
+                                            <th> Giá </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $idk = isset($_COOKIE["viewd"]) ? unserialize($_COOKIE["viewd"]) : [];
+                                        if (isset($idk)) {
+                                            foreach ($idk as $id) {
+                                                $sql = "SELECT * FROM products WHERE id = $id";
+                                                $result = mysqli_query($conn, $sql);
+                                                if (!$result) {
+                                                    echo 'Không thể chọn!';
+                                                } else {
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                        if ($row['image'] == null || $row['image'] == '') {
+                                                            $Image = "";
+                                                        } else {
+                                                            $Image = $row['image'];
+                                                        }
+                                        ?>
+                                                        <tr>
+                                                            <!-- Ảnh sản phẩm -->
+                                                            <td>
+                                                                <center><img src="<?php echo $Image; ?>" width=" 100px;"></center>
+                                                            </td>
 
-                if ($result->num_rows == 1) {
-                    $product = $result->fetch_assoc();
-                    // Hiển thị thông tin sản phẩm, ví dụ:
-                    echo '<div class="product-item">';
-                    echo '<img src="' . htmlspecialchars($product['image']) . '" alt="' . htmlspecialchars($product['name']) . '">';
-                    echo '<h2>' . htmlspecialchars($product['name']) . '</h2>';
-                    // Hiển thị các thông tin khác của sản phẩm
-                    echo '</div>';
-                }
-            }
-            ?>
+                                                            <!-- Tên sản phẩm -->
+                                                            <td><?php echo $row['name']; ?></td>
+
+                                                            <!-- Giá của 1 sản phẩm -->
+                                                            <td><?php echo number_format($row['price']); ?></td>
+                                        <?php
+                                                    }
+                                                }
+                                            }
+
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
         </div>
     </div>
     <?php include('./footer.php') ?>
