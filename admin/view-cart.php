@@ -58,6 +58,7 @@ if (isset($_POST['update-cart'])) {
                                             <th> Giảm giá </th>
                                             <th> Tổng giá </th>
                                             <th> Xóa </th>
+                                            <th> key </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -130,6 +131,7 @@ if (isset($_POST['update-cart'])) {
                                                             <td><a onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')" href="delete-cart.php?id=<?php echo $id; ?>">
                                                                     <span class="fa fa-trash fa-lg" aria-hidden="true"></span>
                                                                 </a></td>
+                                                                <td><?php echo $row['keyprd']; ?></td>
                                                         </tr>
                                         <?php
                                                         $infor = $infor . $row['name'] . ' - ' . $_SESSION['cart'][$row['id']] . ' cái - giá: ' . $row['price'] . '<br/>';
