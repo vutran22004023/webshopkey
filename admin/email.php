@@ -22,7 +22,7 @@ try {                //Enable verbose debug output
 
     //Recipients
     $mail->setFrom('levu1962004@gmail.com', 'ShopKeyCenter');
-    $mail->addAddress('vutl.144010122699@vtc.edu.vn', $name);     //Add a recipient             //Name is optional
+    $mail->addAddress('vutl.1440101226699@vtc.edu.vn', $name);     //Add a recipient             //Name is optional
     // $mail->addReplyTo('info@example.com', 'Information');
     $mail->addCC('levu1962004@gmail.com');
     // $mail->addBCC('bcc@example.com');
