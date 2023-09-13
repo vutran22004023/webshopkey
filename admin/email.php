@@ -40,7 +40,7 @@ try {                //Enable verbose debug output
         <p> Số điện thoại: '  . $phone . '</p> 
         <p> Địa chỉ: '  . $address . '</p> 
         <p> Thông tin sản phẩm: '  . $infor . '</p> 
-        <p> Mã key: ' . $keyy . '<p>
+        <p> Mã key: ' . $keyprd . '<p>
         <p> "Tổng số tiền: '  . $total . '<sup> đ</sup></p> 
         <p> Cảm ơn quý khách đã tin tưởng dùng sản phẩm của chúng tôi! Hy vọng quý khách có thể ghé qua của hàng nhiều hơn, sẽ có nhiều ưu đãi cho khách hàng là thành viên của shop ạ."</p>
     ';
