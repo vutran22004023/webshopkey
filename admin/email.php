@@ -22,7 +22,7 @@ try {                //Enable verbose debug output
 
     //Recipients
     $mail->setFrom('levu1962004@gmail.com', 'ShopKeyCenter');
-    $mail->addAddress('vutl.1440101226699@vtc.edu.vn', $name);     //Add a recipient             //Name is optional
+    $mail->addAddress('phanhoainam.work@gmail.com', $name);     //Add a recipient             //Name is optional
     // $mail->addReplyTo('info@example.com', 'Information');
     $mail->addCC('levu1962004@gmail.com');
     // $mail->addBCC('bcc@example.com');
@@ -34,16 +34,31 @@ try {                //Enable verbose debug output
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'THÔNG TIN MUA HÀNG TỪ KEY CENTER';
-    $noidung .= '
+    foreach ($_SESSION['cart'] as $id => $prd) {
+        $sql = "SELECT * FROM products WHERE id = $id";
+        $result = mysqli_query($conn, $sql);
+    
+        if ($result) {
+            $row = mysqli_fetch_assoc($result);
+            $keyy = $row['keyprd'];
+            $noidung2 .= ' <p> Mã key: ' . $keyy . '</p> ';
+        }
+    }
+    
+
+    $noidung1 .= '
         <h2>THÔNG TIN MUA HÀNG TỪ KEY CENTER</h2>
         <p> Tên Khách hàng: '  .  $name  . '</p> 
         <p> Số điện thoại: '  . $phone . '</p> 
         <p> Địa chỉ: '  . $address . '</p> 
         <p> Thông tin sản phẩm: '  . $infor . '</p> 
-        <p> Mã key: ' . $keyprd . '<p>
+        
+        
         <p> "Tổng số tiền: '  . $total . '<sup> đ</sup></p> 
         <p> Cảm ơn quý khách đã tin tưởng dùng sản phẩm của chúng tôi! Hy vọng quý khách có thể ghé qua của hàng nhiều hơn, sẽ có nhiều ưu đãi cho khách hàng là thành viên của shop ạ."</p>
     ';
+    $noidung=$noidung1.$noidung2;
+    
     $mail->Body = $noidung;
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
